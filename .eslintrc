@@ -1,7 +1,8 @@
 {
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "node": true
   },
   "extends": "eslint:recommended",
   "rules": {
@@ -14,5 +15,12 @@
     "comma-dangle": ["error", "always-multiline"],
     "no-var": "error",
     "arrow-parens": ["error"]
+  },
+  "globals": {
+    "context": "readonly"
+  },
+  "parser": "babel-parser",
+  "parserOptions": {
+    "sourceType": "module"
   }
 }
