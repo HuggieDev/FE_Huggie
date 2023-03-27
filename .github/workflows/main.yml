@@ -15,11 +15,14 @@ jobs:
     - name: Configure Git and Merge changes
       env:
         GIT_USER_NAME: ${{ github.actor }}
-        GIT_USER_EMAIL: ${{ github.actor }}@users.noreply.github.com
+        GIT_USER_EMAIL: ${{ github.actor }}@github.com
       run: |
         git config --global user.name "${GIT_USER_NAME}"
         git config --global user.email "${GIT_USER_EMAIL}"
         git merge release
+        echo ${{ github.actor }}
+        echo ${GIT_USER_NAME}
+        echo ${GIT_USER_EMAIL}
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
