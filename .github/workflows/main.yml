@@ -7,7 +7,6 @@ jobs:
   deploy:
     name: Deploy to release
     runs-on: ubuntu-latest
-    if: ${{ success() }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -21,7 +20,7 @@ jobs:
       run: |
         git config --global user.name "${GIT_USER_NAME}"
         git config --global user.email "${GIT_USER_EMAIL}"
-        git merge ${{ github.sha }}
+        git merge release
         
     - name: Push changes
       uses: ad-m/github-push-action@master
