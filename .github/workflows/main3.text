@@ -1,38 +1,33 @@
-# name: CI/CD Workflow
-# on:
-#   push:
-#     branches:
-#       - develop
-# jobs:
-#   deploy:
-#     name: Deploy to release
-#     runs-on: ubuntu-latest
-#     steps:
-#     - name: Get user email
-#       id: get_user_email
-#       uses: actions/http-request@v2
-#       with:
-#         url: https://api.github.com/users/${{ github.actor }}
-#         method: GET
-#         headers:
-#           Accept: application/vnd.github.v3+json
-#     - name: Checkout code
-#       uses: actions/checkout@v2
-#       with:
-#         ref: release
-#     - name: Configure Git and Merge changes
-#       env:
-#         GIT_USER_NAME: ${{ github.actor }}
-#         GIT_USER_EMAIL: ${{ steps.get_user_email.outputs.data.email }}
-#       run: |
-#         git config --global user.name "${GIT_USER_NAME}"
-#         git config --global user.email "${GIT_USER_EMAIL}"
-#         git merge release
-#         echo ${{ github.actor }}
-#         echo ${GIT_USER_NAME}
-#         echo ${GIT_USER_EMAIL}
-#     - name: Push changes
-#       uses: ad-m/github-push-action@master
-#       with:
-#         branch: release
-#         github_token: ${{ secrets.GITHUB_TOKEN }}
+
+name: CI/CD Workflow
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  merge-and-deploy:
+    name: Merge and Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        ref: develop
+
+    - name: Configure Git
+      run: |
+        git config --global user.name "Your Name"
+        git config --global user.email "your-email@example.com"
+
+    - name: Check for conflicts
+      run: |
+        git fetch origin
+        git diff --name-only HEAD origin/develop --exit-code || (echo "Merge conflict detected"; exit 1)
+
+    - name: Merge changes
+      run: |
+        git merge origin/develop
+        echo "Merge successful!"
