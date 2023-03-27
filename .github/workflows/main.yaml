@@ -17,9 +17,12 @@ jobs:
         ref: develop
 
     - name: Configure Git
+      env:
+        GIT_USER_NAME: ${{ github.actor }}
+        GIT_USER_EMAIL: ${{ github.actor }}@users.noreply.github.com
       run: |
-        git config --global user.name "Your Name"
-        git config --global user.email "your-email@example.com"
+        git config --global user.name "${GIT_USER_NAME}"
+        git config --global user.email "${GIT_USER_EMAIL}"
 
     - name: Check for conflicts
       run: |
