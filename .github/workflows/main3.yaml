@@ -1,0 +1,38 @@
+name: CI/CD Workflow
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  merge-and-deploy:
+    name: Merge and Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        ref: develop
+
+    - name: Configure Git
+      run: |
+        git config --global user.name "Your Name"
+        git config --global user.email "your-email@example.com"
+
+    - name: Check for conflicts
+      run: |
+        git fetch origin
+        git diff --name-only HEAD origin/develop --exit-code || (echo "Merge conflict detected"; exit 1)
+
+    - name: Merge changes
+      run: |
+        git merge origin/develop
+        echo "Merge successful!"
+
+    - name: Deploy to release
+      uses: ad-m/github-push-action@master
+      with:
+        branch: release
+        github_token: ${{ secrets.GITHUB_TOKEN }}
