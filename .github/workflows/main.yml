@@ -8,6 +8,14 @@ jobs:
     name: Deploy to release
     runs-on: ubuntu-latest
     steps:
+    - name: Get user email
+      id: get_user_email
+      uses: actions/http-request@v2.x
+      with:
+        url: https://api.github.com/users/${{ github.actor }}
+        method: GET
+        headers:
+          Accept: application/vnd.github.v3+json
     - name: Checkout code
       uses: actions/checkout@v2
       with:
