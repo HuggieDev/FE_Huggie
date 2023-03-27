@@ -1,38 +1,48 @@
-# name: CI/CD Workflow
-# on:
-#   push:
-#     branches:
-#       - develop
-# jobs:
-#   deploy:
-#     name: Deploy to release
-#     runs-on: ubuntu-latest
-#     steps:
-#     - name: Get user email
-#       id: get_user_email
-#       uses: actions/http-request@v2
-#       with:
-#         url: https://api.github.com/users/${{ github.actor }}
-#         method: GET
-#         headers:
-#           Accept: application/vnd.github.v3+json
-#     - name: Checkout code
-#       uses: actions/checkout@v2
-#       with:
-#         ref: release
-#     - name: Configure Git and Merge changes
-#       env:
-#         GIT_USER_NAME: ${{ github.actor }}
-#         GIT_USER_EMAIL: ${{ steps.get_user_email.outputs.data.email }}
-#       run: |
-#         git config --global user.name "${GIT_USER_NAME}"
-#         git config --global user.email "${GIT_USER_EMAIL}"
-#         git merge release
-#         echo ${{ github.actor }}
-#         echo ${GIT_USER_NAME}
-#         echo ${GIT_USER_EMAIL}
-#     - name: Push changes
-#       uses: ad-m/github-push-action@master
-#       with:
-#         branch: release
-#         github_token: ${{ secrets.GITHUB_TOKEN }}
+name: CI/CD Workflow
+on:
+  pull_request:
+    branches:
+      - develop
+jobs:
+  test:
+    name: Jest Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+      - name: Install Dependencies
+        run: npm install
+      # - name: Run Jest Test
+      #   run: npm test
+      - name: Set random reviewer
+        id: random_reviewer
+        run: echo "::set-output name=reviewer::$(shuf -n1 <<< ${{ github.event.repository.collaborators }})"
+      - name: Request review
+        uses: peter-evans/request-review@v2
+        with:
+          reviewers: ${{ steps.random_reviewer.outputs.reviewer }}
+  merge:
+    name: Merge to develop
+    needs: test
+    if: github.event.pull_request.review_comments > 0
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+      - name: Configure Git and Merge changes
+        env:
+          GIT_USER_NAME: ${{ github.actor }}
+          GIT_USER_EMAIL: ${{ github.actor }}@github.com
+        run: |
+          git config --global user.name "${GIT_USER_NAME}"
+          git config --global user.email "${GIT_USER_EMAIL}"
+          git merge develop --no-ff --no-edit
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: develop
+          github_token: ${{ secrets.GITHUB_TOKEN }}
