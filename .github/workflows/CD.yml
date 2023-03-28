@@ -5,7 +5,7 @@ on:
     branches:
       - develop
     types: [closed]
-    
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -25,5 +25,6 @@ jobs:
             sudo docker stop $(sudo docker ps -aq)
             docker system prune -y
             docker-compose build
+            mkdir test-before
             docker-compose up -d
-            
+            mkdir test-after
