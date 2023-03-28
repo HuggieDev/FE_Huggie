@@ -19,7 +19,7 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           port: ${{ secrets.PORT }}
           script: |
-            cd FE_Huggie/
+            cd /home/ec2-user/FE_Huggie/
             mkdir move-dir
             git checkout develop
             git pull
