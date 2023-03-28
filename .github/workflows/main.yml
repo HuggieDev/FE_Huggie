@@ -8,10 +8,7 @@ jobs:
   review:
     runs-on: ubuntu-latest
     steps:
-    - name: Request random review
-        uses: maxkomarychev/octions/request-random-reviewer@v1
-        with:
-          repository: ${{ github.repository }}
-          pull_request_number: ${{ github.event.pull_request.number }}
-          team_reviewers_only: true
-          token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/checkout@v1
+    - uses: uesteibar/reviewer-lottery@v2
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
