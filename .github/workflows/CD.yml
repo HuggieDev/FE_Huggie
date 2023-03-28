@@ -5,7 +5,7 @@ on:
     branches:
       - develop
     types: [closed]
-    
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -20,10 +20,10 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd FE_Huggie/
+            mkdir move-dir
             git checkout develop
             git pull
-            sudo docker stop $(sudo docker ps -aq)
-            docker system prune -y
             docker-compose build
+            mkdir test-before
             docker-compose up -d
-            
+            mkdir test-after
