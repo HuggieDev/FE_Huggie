@@ -1,0 +1,29 @@
+name: CD
+
+on:
+  pull_request:
+    branches:
+      - develop
+    types: [closed]
+    
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    steps:
+      - name: SSH to EC2 instance
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd FE_Huggie/
+            git checkout develop
+            git pull
+            sudo docker stop $(sudo docker ps -aq)
+            docker system prune -y
+            docker-compose build
+            docker-compose up -d
+            
