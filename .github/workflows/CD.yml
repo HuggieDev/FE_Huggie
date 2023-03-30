@@ -34,6 +34,7 @@ jobs:
   #           docker-compose up -d
   #           mkdir test-after
 
+
   deploy:
     runs-on: [self-hosted, Linux, X64, FE]
     if: github.event.pull_request.merged == true
@@ -41,10 +42,10 @@ jobs:
       - name: SSH to EC2 instance
         uses: appleboy/ssh-action@master
         with:
-          host: '3.39.255.66'
-          username: 'ec2-user'
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PRIVATE_KEY }}
-          port: '22'
+          port: ${{ secrets.PORT }}
           script: |
-            mkdir 1234
-
+            mkdir move-dir
+            
