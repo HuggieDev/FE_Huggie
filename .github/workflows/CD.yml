@@ -40,7 +40,12 @@ jobs:
     if: github.event.pull_request.merged == true
     steps:
       - name: SSH to EC2 instance2
-        run: mkdir move-dir
+        run: |
+          ssh -o StrictHostKeyChecking=no \
+            -i ${{ secrets.PRIVATE_KEY }} \
+            ${{ secrets.USERNAME }}@${{ secrets.HOST }} \
+            -p ${{ secrets.PORT }} \
+            "mkdir move-dir"
         # uses: appleboy/ssh-action@master
         # with:
         #   host: ${{ secrets.HOST }}
