@@ -39,7 +39,7 @@ jobs:
     runs-on: [self-hosted, Linux, X64, FE]
     if: github.event.pull_request.merged == true
     steps:
-      - name: SSH to EC2 instance
+      - name: SSH to EC2 instance2
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
