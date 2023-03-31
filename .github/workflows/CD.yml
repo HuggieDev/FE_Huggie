@@ -7,34 +7,6 @@ on:
     types: [closed]
 
 jobs:
-  # start-runner:
-  #     name: Start self-hosted EC2 runner
-  #     runs-on: ubuntu-latest
-  #     outputs:
-  #       label: [self-hosted, Linux, X64, FE]
-  #       ec2-instance-id: i-099746e558b25f8ac
-  #     steps:
-  #     - name: Configure AWS credentials
-  #       uses: aws-actions/configure-aws-credentials@v1
-  #       with:
-  #         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  #         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  #         aws-region: ${{ secrets.AWS_REGION }}
-  #         host: ${{ secrets.HOST }}
-  #         username: ${{ secrets.USERNAME }}
-  #         key: ${{ secrets.PRIVATE_KEY }}
-  #         port: ${{ secrets.PORT }}
-  #         script: |
-  #           cd /home/ec2-user/FE_Huggie/
-  #           mkdir move-dir
-  #           git checkout develop
-  #           git pull
-  #           docker-compose build
-  #           mkdir test-before
-  #           docker-compose up -d
-  #           mkdir test-after
-
-
   deploy:
     runs-on: [self-hosted, Linux, X64, FE]
     if: github.event.pull_request.merged == true
@@ -52,12 +24,3 @@ jobs:
           git pull origin develop
           docker-compose build
           docker-compose up -d
-        # uses: appleboy/ssh-action@master
-        # with:
-        #   host: ${{ secrets.HOST }}
-        #   username: ${{ secrets.USERNAME }}
-        #   key: ${{ secrets.PRIVATE_KEY }}
-        #   port: ${{ secrets.PORT }}
-        #   script: |
-        #     mkdir move-dir
-            
