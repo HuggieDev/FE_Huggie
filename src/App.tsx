@@ -1,16 +1,11 @@
-import { Route,Routes,BrowserRouter } from "react-router-dom";
-import LandingPage from "./pages/LandingPage";
-import TestPage from "./pages/Test";
-
+import { Component } from "react";
 function App() {
-
 	return (
-		<BrowserRouter>
-		<Routes>
-	      <Route path="/landing" element={<LandingPage/>} />
-	      <Route path="/test" element={<TestPage/>} />
-		</Routes>
-		</BrowserRouter>
+		<>
+			<div>안녕하세요 앱세팅 페이진데요</div>
+			<div>나중에 레이아웃 설정해주세오</div>
+			{/* <Component/> */}
+		</>
 	);
 }
 
