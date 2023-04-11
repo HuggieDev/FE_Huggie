@@ -15,8 +15,8 @@ const CommonButton = ({
 }) => {
   let icon = '';
   if (iconSrc) icon = iconSrc;
-  else if (buttonText.includes('다음')) icon = '/image/Navigate next.svg';
-  else if (buttonText.includes('추가')) icon = '/image/Add.svg';
+  else if (buttonText.includes('다음')) icon = '/src/image/Navigate next.svg';
+  else if (buttonText.includes('추가')) icon = '/src/image/Add.svg';
   return (
     <BtnWrapper isActive={isActive} onClick={onClickEvent} style={buttonStyles}>
       {buttonText}

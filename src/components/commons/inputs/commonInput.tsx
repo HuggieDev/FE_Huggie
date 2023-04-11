@@ -5,19 +5,21 @@ const CommonInput = ({
   titleStyles,
   errorMessage,
   isSearch,
+  wrapperStyles
 }: {
   title?: string | number;
   titleStyles?: { [key: string]: string | number };
   errorMessage?: string;
   isSearch?: boolean;
+  wrapperStyles?: {[key:string]:string|number}
 }) => {
   return (
     <>
       {title && <Title style={titleStyles}>{title}</Title>}
-      <InputWrapper errorMessage={errorMessage} isSearch={isSearch}>
+      <InputWrapper errorMessage={errorMessage} isSearch={isSearch} style={wrapperStyles}>
         {isSearch && (
           <img
-            src="/image/Search.svg"
+            src="/src/image/Search.svg"
           />
         )}
         <UnderLineInput />
