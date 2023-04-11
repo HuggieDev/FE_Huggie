@@ -17,8 +17,7 @@ const CommonInput = ({
       <InputWrapper errorMessage={errorMessage} isSearch={isSearch}>
         {isSearch && (
           <img
-            src="vite.svg"
-            style={{ width: '24px', height: '24px', padding: '12px' }}
+            src="/image/Search.svg"
           />
         )}
         <UnderLineInput />
