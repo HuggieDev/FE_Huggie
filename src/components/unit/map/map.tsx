@@ -33,7 +33,7 @@ export default function Map(props:MapProps){
     },[])
 return(
     <>
-        <MyLocationBt src="/src/image/myLocationBt.svg"/>
+        <MyLocationBt src="/src/assets/image/myLocationBt.svg"/>
         <div id="map" style={{width:'360px',height:'800px'}}></div>
     </>
 )
