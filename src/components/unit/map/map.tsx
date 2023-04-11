@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { MapProps } from "./map.type";
+import styled from "styled-components";
 
 declare const window: typeof globalThis & {
     kakao: any;
@@ -32,7 +33,15 @@ export default function Map(props:MapProps){
     },[])
 return(
     <>
+        <MyLocationBt src="/src/image/myLocationBt.svg"/>
         <div id="map" style={{width:'360px',height:'800px'}}></div>
     </>
 )
 }
+
+const MyLocationBt = styled.img`
+    position: absolute;
+    left: 20px;
+    bottom: 80px;
+    z-index: 1000;
+`
