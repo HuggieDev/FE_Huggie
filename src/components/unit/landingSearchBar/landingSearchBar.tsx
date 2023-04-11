@@ -7,7 +7,7 @@ export default function SearchBar(){
             <InputDiv>
             <CommonInput isSearch/>
             </InputDiv>
-            <Img src='/src/image/landingBt.svg'/>
+            <Img src='/src/assets/image/landingBt.svg'/>
         </Container>
     )
 }

@@ -19,7 +19,7 @@ const CommonInput = ({
       <InputWrapper errorMessage={errorMessage} isSearch={isSearch} style={wrapperStyles}>
         {isSearch && (
           <img
-            src="/src/image/Search.svg"
+            src="/src/assets/image/Search.svg"
           />
         )}
         <UnderLineInput />
