@@ -31,9 +31,41 @@ export default function Map(props:MapProps){
         });
         infowindow.open(map, marker); 
     },[])
+
+    // 내위치 가지고 오기
+    const onClickGetMyLocation = ()=>{
+        const mapContainer = document.getElementById('map'),
+         mapOption = { 
+            center: new kakao.maps.LatLng(33.450701, 126.570667), 
+            level: 3 
+        }; 
+        const map = new kakao.maps.Map(mapContainer, mapOption);
+        if (navigator.geolocation) {
+            // GeoLocation을 이용해서 접속 위치받아오기
+            navigator.geolocation.getCurrentPosition(function(position) {
+                const lat = position.coords.latitude, 
+                    lon = position.coords.longitude; 
+                const locPosition = new kakao.maps.LatLng(lat, lon), 
+                    message = ''; 
+                displayMarker(locPosition, message);
+                    
+              });
+        } else { 
+            const locPosition = new kakao.maps.LatLng(33.450701, 126.570667),    
+                message = '사용자의 위치를 받아올 수 없습니다.'
+            displayMarker(locPosition, message);
+        }
+        function displayMarker(locPosition:any, message:any) {
+            const marker = new kakao.maps.Marker({  
+                map: map, 
+                position: locPosition
+            }); 
+            map.setCenter(locPosition);      
+        }    
+    }
 return(
     <>
-        <MyLocationBt src="/src/assets/image/myLocationBt.svg"/>
+        <MyLocationBt src="/src/assets/image/myLocationBt.svg" onClick={onClickGetMyLocation}/>
         <div id="map" style={{width:'360px',height:'800px'}}></div>
     </>
 )
