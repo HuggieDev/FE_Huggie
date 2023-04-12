@@ -17,6 +17,7 @@ const Container = styled.div`
     width: 100%;
 `
 const InputDiv = styled.div`
+    padding-top: 7px;
     width: 100%;
 `
 const Img = styled.img`
