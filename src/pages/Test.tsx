@@ -19,6 +19,7 @@ const TestPage = () => {
       <div
         style={{ backgroundColor: 'blue', width: '300px', height: '300px' }}
       ></div>
+      <HeadNav rightIcon='/src/assets/image/More vert.svg'  onClickEvent={()=>{console.log("a")}}/>
       <HeadNav title='내 맛집 보기'  onClickEvent={()=>{console.log("a")}}/>
       <CommonInput isSearch title={'맛집이름'} errorMessage={"error!"} />
       <LargeButton isActive buttonText='새 기록 추가' onClickEvent={()=>{}}/>
