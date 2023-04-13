@@ -4,11 +4,15 @@ import { useNavigate } from 'react-router-dom';
 const HeadNav = ({
   title,
   icon,
+  rightIcon,
   onClickEvent,
+  rightIconEvent,
 }: {
   title?: string;
   icon?: string;
+  rightIcon?:string
   onClickEvent?: () => void;
+  rightIconEvent?: () => void
 }) => {
   const navigate = useNavigate();
   const moveBack = () => {
@@ -21,6 +25,7 @@ const HeadNav = ({
         onClick={onClickEvent || moveBack}
       />
       {title && <Title>{title}</Title>}
+      {rightIcon&& <Icon src={rightIcon} onClick={rightIconEvent}/>}
     </Wrapper>
   );
 };
