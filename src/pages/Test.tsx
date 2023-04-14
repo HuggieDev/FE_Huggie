@@ -17,6 +17,7 @@ const TestPage = () => {
   }
   return (
     <div style={{width:"400px"}}>
+      <h1>공통 컴포넌트 테스트 페이지 입니다</h1>
       <div
         style={{ margin:"10px 0",backgroundColor: 'blue', width: '300px', height: '300px' }}
       ></div>
