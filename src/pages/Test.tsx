@@ -17,7 +17,6 @@ const TestPage = () => {
   }
   return (
     <div style={{width:"400px"}}>
-      22
       <div
         style={{ margin:"10px 0",backgroundColor: 'blue', width: '300px', height: '300px' }}
       ></div>
