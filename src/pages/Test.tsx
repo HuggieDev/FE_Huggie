@@ -1,6 +1,7 @@
 import LargeButton from '../components/commons/buttons/commonButton';
 import HeadNav from '../components/commons/headNav/headNav';
 import CommonInput from '../components/commons/inputs/commonInput';
+import ListContents from '../components/commons/listContents/listContents';
 import Tags from '../components/commons/tags/tags';
 
 const TestPage = () => {
@@ -18,6 +19,8 @@ const TestPage = () => {
   return (
     <div style={{width:"400px"}}>
       <h1>공통 컴포넌트 테스트 페이지 입니다</h1>
+      <ListContents title='adsqweqwejwidqwjqweqweqweqweqweqweeasd' location='qqweqwnmoid' date='2023/01/01' contents='qwqweqweasdasqweasdxzcdasdasdasdasdadsdddddd'/>
+      <ListContents title='adsqweqwejwidqwjqweqweqweqweqweqweeasd' location='qqweqwnmoid'/>
       <div
         style={{ margin:"10px 0",backgroundColor: 'blue', width: '300px', height: '300px' }}
       ></div>
