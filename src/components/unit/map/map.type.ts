@@ -1,5 +1,5 @@
 export interface MapProps {
     restaurantName : string;
-    lati?: number;
-    long?: number;
+    lat?: number;
+    lon?: number;
 }
