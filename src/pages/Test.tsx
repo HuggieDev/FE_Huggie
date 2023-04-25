@@ -1,4 +1,4 @@
-import LargeButton from '../components/commons/buttons/commonButton';
+import CommonButton from '../components/commons/buttons/commonButton';
 import HeadNav from '../components/commons/headNav/headNav';
 import CommonInput from '../components/commons/inputs/commonInput';
 import ListContents from '../components/commons/listContents/listContents';
@@ -28,10 +28,10 @@ const TestPage = () => {
       <HeadNav rightIcon='/src/assets/image/More vert.svg'  onClickEvent={()=>{console.log("a")}}/>
       <HeadNav title='내 맛집 보기'  onClickEvent={()=>{console.log("a")}}/>
       <CommonInput isSearch title={'맛집이름'} errorMessage={"error!"} />
-      <LargeButton isActive buttonText='새 기록 추가' onClickEvent={()=>{}}/>
+      <CommonButton isActive buttonText='새 기록 추가' onClickEvent={()=>{}}/>
       <div style={{display:"flex",justifyContent:"space-between"}}>
-      <LargeButton buttonText='기록 추가하기' onClickEvent={()=>{}} buttonStyles={btnstr} iconSrc={"vite.svg"}/>
-      <LargeButton isActive buttonText='저장' onClickEvent={()=>{}} buttonStyles={btnstr2}/>
+      <CommonButton buttonText='기록 추가하기' onClickEvent={()=>{}} buttonStyles={btnstr} iconSrc={"vite.svg"}/>
+      <CommonButton isActive buttonText='저장' onClickEvent={()=>{}} buttonStyles={btnstr2}/>
       </div>
     </div>
   );
