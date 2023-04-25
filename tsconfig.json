@@ -16,7 +16,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["eslint"],
+    "types": ["eslint","jest"],
     "outDir": "dist",
   },
   "include": ["src"],
