@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { MapProps } from "./map.type";
 import styled from "styled-components";
 import { onClickGetMyLocation } from "./mapFn/onClickGetMyLocation";

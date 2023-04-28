@@ -8,7 +8,7 @@ export default function useInitLocation(){
     })
     useEffect(()=>{
         const location = async()=>{
-            const mylocation = await getMyLocation()
+            const mylocation:any = await getMyLocation()
             setCoords(mylocation)
        }
        location()

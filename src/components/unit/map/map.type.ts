@@ -3,3 +3,10 @@ export interface MapProps {
     lat?: number;
     lon?: number;
 }
+
+export interface LocationFn{
+    mylocation:{
+        lat?: number|unknown;
+        lon?: number|unknown;
+    }
+}
