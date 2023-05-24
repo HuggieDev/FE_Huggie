@@ -5,12 +5,16 @@ const HeadNav = ({
   title,
   icon,
   rightIcon,
+  component,
+  wrapperStyles,
   onClickEvent,
   rightIconEvent,
 }: {
   title?: string;
   icon?: string;
   rightIcon?:string
+  component?:JSX.Element
+  wrapperStyles?:{[key:string]:string|number}
   onClickEvent?: () => void;
   rightIconEvent?: () => void
 }) => {
@@ -19,11 +23,12 @@ const HeadNav = ({
     navigate(-1);
   };
   return (
-    <Wrapper>
+    <Wrapper style={wrapperStyles}>
       <Icon
         src={icon || '/src/assets/image/arrow_back.svg'}
         onClick={onClickEvent || moveBack}
       />
+      {component}
       {title && <Title>{title}</Title>}
       {rightIcon&& <Icon src={rightIcon} onClick={rightIconEvent}/>}
     </Wrapper>
