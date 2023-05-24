@@ -5,12 +5,14 @@ const CommonInput = ({
   titleStyles,
   errorMessage,
   isSearch,
+  rightIcon,
   wrapperStyles
 }: {
   title?: string | number;
   titleStyles?: { [key: string]: string | number };
   errorMessage?: string;
   isSearch?: boolean;
+  rightIcon?:JSX.Element
   wrapperStyles?: {[key:string]:string|number}
 }) => {
   return (
@@ -23,6 +25,7 @@ const CommonInput = ({
           />
         )}
         <UnderLineInput />
+        {rightIcon && rightIcon}
       </InputWrapper>
       {errorMessage && <ErrorText>{errorMessage}</ErrorText>}
     </>
@@ -38,6 +41,7 @@ const Title = styled.h3`
   font-weight: 400;
 `;
 const InputWrapper = styled.div`
+width: 100%;
   display: flex;
   border-bottom: ${(props: StyleProps) =>
     props.errorMessage ? '1px solid #DE350B' : '1px solid #000'};

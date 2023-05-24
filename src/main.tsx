@@ -5,6 +5,7 @@ import App from './App'
 import './index.css'
 import LandingPage from './pages/LandingPage'
 import TestPage from './pages/Test'
+import SearchPage from './pages/SearchPage'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
@@ -12,6 +13,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <Routes>
     <Route path="/" element={<App/>} />
     <Route path="/landing" element={<LandingPage/>} />
+    <Route path="/search" element={<SearchPage/>} />
 	  <Route path="/test" element={<TestPage/>} />
   </Routes>
 	</BrowserRouter>
