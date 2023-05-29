@@ -5,16 +5,17 @@ export default function SearchBar(){
     return(
         <Container>
             <InputDiv>
-            <CommonInput isSearch/>
+            <CommonInput wrapperStyles={{border:"none"}} isSearch/>
             </InputDiv>
             <Img src='/src/assets/image/landingBt.svg'/>
         </Container>
     )
 }
 const Container = styled.div`
-    padding: 48px 20px 16px 20px;
+    padding: 48px 0 0 20px;
     display: flex;
     width: 100%;
+    border-bottom: 1px solid #000;
 `
 const InputDiv = styled.div`
     padding-top: 7px;

@@ -36,7 +36,7 @@ export default function Map(props:MapProps){
 return(
     <>
         <MyLocationBt src="/src/assets/image/myLocationBt.svg" onClick={onClickGetMyLocation}/>
-        <div id="map" style={{width:'360px',height:'800px'}}></div>
+        <div id="map" style={{height:'100%'}}></div>
     </>
 )
 }
