@@ -9,7 +9,7 @@ const CommonButton = ({
 }: {
   isActive?: boolean;
   buttonText: string;
-  onClickEvent: () => void;
+  onClickEvent: () => void ;
   buttonStyles?: { [key: string]: string | number };
   iconSrc?: string;
 }) => {
