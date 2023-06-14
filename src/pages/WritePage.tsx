@@ -11,7 +11,7 @@ const WritePage = () => {
     }
     return (
         phase===1 ?
-        <div style={{height:'100%',position:'relative'}}>
+        <div style={{height:'100%',position:'relative',padding:'20px'}}>
         <HeadNav title="내 맛집 기록하기"/>
         <ProgressBar prevProgress={0} progress={35} wrapperStyles={{marginTop:'36px',marginBottom:'32px'}}/>
         <CommonInput title={'맛집 이름'} placeHolder="맛집 이름 검색" errorMessage="맛집 이름을 입력해주세요."/>
@@ -21,7 +21,7 @@ const WritePage = () => {
         <CommonButton buttonText="다음" onClickEvent={()=>onClickNextPhase(2)} buttonStyles={{ position:'absolute',bottom:'50px',backgroundColor:'#E4571B', color:'#000'}}/>
         </div>
         : phase === 2 ?
-        <div style={{height:'100%',position:'relative'}}>
+        <div style={{height:'100%',position:'relative',padding:'20px'}}>
         <HeadNav title="내 맛집 기록하기" onClickEvent={()=>onClickNextPhase(1)}/>
         <ProgressBar prevProgress={35} progress={75} wrapperStyles={{marginTop:'36px',marginBottom:'32px'}}/>
         <CommonInput title={'등록일'} titleStyles={{marginTop:'32px'}}/>
@@ -29,7 +29,7 @@ const WritePage = () => {
         <CommonButton buttonText="다음" onClickEvent={()=>onClickNextPhase(3)} buttonStyles={{ position:'absolute',bottom:'50px',backgroundColor:'#E4571B', color:'#000'}}/>
         </div>
         : 
-        <div style={{height:'100%',position:'relative'}}>
+        <div style={{height:'100%',position:'relative',padding:'20px'}}>
             <HeadNav title="내 맛집 기록하기" onClickEvent={()=>onClickNextPhase(2)}/>
             <ProgressBar prevProgress={75} progress={100} wrapperStyles={{marginTop:'36px',marginBottom:'32px'}}/>
             <CommonInput isTextArea title={'맛집 이름'} placeHolder="맛집 이름 검색" errorMessage="맛집 이름을 입력해주세요." titleStyles={{marginTom:'32px'}}/>
