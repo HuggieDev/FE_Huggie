@@ -5,6 +5,7 @@ const CommonInput = ({
   titleStyles,
   errorMessage,
   isSearch,
+  leftIcon,
   rightIcon,
   wrapperStyles,
   placeHolder,
@@ -14,6 +15,7 @@ const CommonInput = ({
   titleStyles?: { [key: string]: string | number };
   errorMessage?: string;
   isSearch?: boolean;
+  leftIcon?:JSX.Element
   rightIcon?:JSX.Element
   wrapperStyles?: {[key:string]:string|number}
   placeHolder?:string
@@ -23,6 +25,7 @@ const CommonInput = ({
     <>
       {title && <Title style={titleStyles}>{title}</Title>}
       <InputWrapper errorMessage={errorMessage} isSearch={isSearch} style={wrapperStyles}>
+        {leftIcon&&leftIcon}
         {isSearch && (
           <img
             src="/src/assets/image/Search.svg"
