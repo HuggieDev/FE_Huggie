@@ -1,6 +1,14 @@
 import CommonButton from '../../commons/buttons/commonButton'
 import * as S from './login.styled'
 export default function Login(){
+    const REST_API_KEY = '0b48ff6f628ca5627579726e9e4906dc';
+    const REDIRECT_URI = 'http://localhost:3000/social';
+    const link = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+
+    const loginHandler = () => {
+        const code = new URL(window.location.href).searchParams.get("code");
+    };
+  
     return(
         <S.Container>
             <S.Image src='/src/assets/image/Login.png'/>
