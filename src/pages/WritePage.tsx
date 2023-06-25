@@ -38,15 +38,15 @@ const WritePage = () => {
                 onChangeEvent={onChangeRate}
             />
             <CommonInput title={'등록일'} titleStyles={{marginTop:'32px'}} leftIcon={<img src='/src/assets/image/calendar_today.svg'/>}/>
-            <CommonInput title={'주문 메뉴'} titleStyles={{marginTop:'32px'}} placeHolder="#해시태그로 #입력해주세요" errorMessage="해시태그를 알맞은 형태로 입력해주세요."/>
+            <CommonInput title={'주문 메뉴'} wrapperStyles={{padding:'0'}} titleStyles={{marginTop:'32px'}} placeHolder="#해시태그로 #입력해주세요" errorMessage="해시태그를 알맞은 형태로 입력해주세요."/>
             <CommonButton buttonText="다음" onClickEvent={()=>onClickNextPhase(3)} buttonStyles={{ position:'absolute',bottom:'50px',backgroundColor:'#E4571B', color:'#000'}}/>
             </div>
             : 
             <div>
                 <HeadNav title="내 맛집 기록하기" onClickEvent={()=>onClickNextPhase(2)}/>
                 <ProgressBar prevProgress={75} progress={100} wrapperStyles={{marginTop:'36px',marginBottom:'32px'}}/>
-                <CommonInput isTextArea title={'맛집 기록'} placeHolder="방문한 맛집에 대한 기록을 남겨주세요." errorMessage="방문한 맛집에 대한 기록을 입력해주세요." titleStyles={{marginTom:'32px'}}/>
-                <Upload />
+                <CommonInput isTextArea wrapperStyles={{padding:'0',border:'none'}} title={'맛집 기록'} placeHolder="방문한 맛집에 대한 기록을 남겨주세요." errorMessage="방문한 맛집에 대한 기록을 입력해주세요." titleStyles={{marginTom:'32px'}}/>
+                <Upload prevImages={['https://miro.medium.com/v2/resize:fit:720/format:webp/1*vc-tY9pvNvXAES-61Yra1g.png','https://miro.medium.com/v2/resize:fit:720/format:webp/1*vc-tY9pvNvXAES-61Yra1g.png','https://miro.medium.com/v2/resize:fit:720/format:webp/1*vc-tY9pvNvXAES-61Yra1g.png','https://miro.medium.com/v2/resize:fit:720/format:webp/1*vc-tY9pvNvXAES-61Yra1g.png','https://miro.medium.com/v2/resize:fit:720/format:webp/1*vc-tY9pvNvXAES-61Yra1g.png','https://miro.medium.com/v2/resize:fit:720/format:webp/1*vc-tY9pvNvXAES-61Yra1g.png','https://miro.medium.com/v2/resize:fit:720/format:webp/1*vc-tY9pvNvXAES-61Yra1g.png']}/>
                 <div style={{width:'100%',textAlign:'center',color:'#808080',fontWeight:'400',fontSize:'12px', position:'absolute',bottom:'110px',left:'0'}}>작성된 리뷰는 저장 시 더이상 수정이 불가능합니다.</div>
                 <CommonButton buttonText="저장" onClickEvent={()=>onClickNextPhase(3)} buttonStyles={{height:'45px', position:'absolute',bottom:'50px',backgroundColor:'#E4571B', color:'#000'}}/>
             </div>
