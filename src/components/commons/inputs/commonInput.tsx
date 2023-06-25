@@ -32,7 +32,7 @@ const CommonInput = ({
           />
         )}
         {isTextArea ? 
-        <UnderLineTextArea placeholder={placeHolder}/>
+        <UnderLineTextArea placeholder={placeHolder} errorMessage={errorMessage}/>
       :
       <UnderLineInput placeholder={placeHolder}/>
       }
@@ -66,10 +66,10 @@ const UnderLineInput = styled.input`
 `;
 const UnderLineTextArea = styled.textarea`
   width: 100%;
-  height: auto;
-  min-height: 40px;
-  /* max-height: 500px; */
-  border: none;
+  height: 312px;
+  background-color: #F2F2F2;
+  border: ${(props: StyleProps) =>
+    props.errorMessage ? '1px solid #DE350B' : '1px solid #000'};
   outline: none;
   padding: 12px 8px;
   resize: none;

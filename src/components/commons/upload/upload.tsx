@@ -1,40 +1,31 @@
-import { useRef, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 import styled from "styled-components"
-const Upload = () => {
+const Upload = ({prevImages}:{prevImages:Array<string>}) => {
     const [files, setFiles] = useState<(File | null)[]>([null,null,null, null, null]);
     const [fileUrl, setFileUrl] = useState("");
-    const onChangeFiles = (file: File, index: number) => {
-        // const newFiles = [...files];
-        // newFiles[index] = file;
-        // setFiles(newFiles);
-        
-      };
-    // const onChangeFile = (event: ChangeEvent<HTMLInputElement>) => {
-    //     console.log(event.target.id);
-
-    // const file: any = event.target.files?.[0];
-    // // @ts-ignore
-    // props.setPrevImages((prev) => {
-    //   if(!prev) return
-    //   const temp = [...prev];
-    //   temp[props.index] = null;
-    //   return [...temp];
-    // });
-
-    // const fileReader = new FileReader();
-    // fileReader.readAsDataURL(file);
-    // fileReader.onload = (data) => {
-    //   setFileUrl(data.target?.result as string);
-    //   props.onChangeFiles(file, props.index);
-    // };
-    // }
     const onClickUpload = () => {fileRef.current?.click()};
+    const onChangeFile = (event:ChangeEvent<HTMLInputElement>) => {
+        const file:any = event.target.files?.[0]
+        const fileReader = new FileReader()
+        fileReader.readAsDataURL(file)
+        fileReader.onload = (data) => {
+            setFileUrl(data.target?.result as string)
+
+        } 
+    }
     const fileRef = useRef<HTMLInputElement>(null);
     return(
         <>
-            <Wrapper onClick={onClickUpload}>
+        <Wrapper>
+            <ImageAdd onClick={onClickUpload}>
                 <img src={'/src/assets/image/photo.svg'}/>
-            </Wrapper>
+            </ImageAdd>
+            <ImagesWrapper>
+            {prevImages.map((el:string)=>(
+                <Images imageURL={el}/>
+            ))}
+            </ImagesWrapper>
+        </Wrapper>
             <input
                 ref={fileRef}
                 type="file"
@@ -45,7 +36,11 @@ const Upload = () => {
     )
 }
 const Wrapper = styled.div`
-    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    margin: 40px 0;
+`
+const ImageAdd = styled.div`
     width: 72px;
     height: 72px;
     background-color: #000;
@@ -53,5 +48,26 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    margin-right: 8px;
+    flex-grow: 0;
+    flex-shrink: 0;
+`
+const ImagesWrapper = styled.div`
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: scroll;
+`
+const Images =styled.div`
+    width: 72px;
+    height: 72px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    background-image: ${(props:{imageURL:string})=>props.imageURL ? `url(${props.imageURL})`:'url()'};
+    background-repeat:none;
+    background-position:center;
+    background-size:cover;
+    margin-right:8px;
 `
 export default Upload
