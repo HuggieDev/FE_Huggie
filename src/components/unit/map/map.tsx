@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { MapProps } from "./map.type";
 import styled from "styled-components";
-import { onClickGetMyLocation } from "./mapFn/onClickGetMyLocation";
+
 
 declare const window: typeof globalThis & {
     kakao: any;
@@ -35,15 +35,9 @@ export default function Map(props:MapProps){
 
 return(
     <>
-        <MyLocationBt src="/src/assets/image/myLocationBt.svg" onClick={onClickGetMyLocation}/>
-        <div id="map" style={{height:'100%'}}></div>
+        
+        <div id="map" style={{position:'absolute',width:'100%',height:'100%'}}>
+        </div>
     </>
 )
 }
-
-const MyLocationBt = styled.img`
-    position: absolute;
-    left: 20px;
-    bottom: 80px;
-    z-index: 1000;
-`

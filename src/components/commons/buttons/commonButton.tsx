@@ -13,10 +13,17 @@ const CommonButton = ({
   buttonStyles?: { [key: string]: string | number };
   iconSrc?: string;
 }) => {
+  
   let icon = '';
   if (iconSrc) icon = iconSrc;
   else if (buttonText.includes('다음')) icon = '/src/assets/image/Navigate next.svg';
-  else if (buttonText.includes('추가')) icon = '/src/assets/image/Add.svg';
+  else if (buttonText.includes('추가')){
+    if(buttonStyles?.backgroundColor==='#000'){
+      icon = '/src/assets/image/AddWhite.svg';
+    }else{
+      icon = '/src/assets/image/Add.svg';
+    }
+    }
   return (
     <BtWrap>
       <BtnWrapper isActive={isActive} onClick={onClickEvent} style={buttonStyles}>
