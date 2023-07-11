@@ -7,6 +7,7 @@ import TestPage from './pages/Test'
 import SearchPage from './pages/SearchPage'
 import WritePage from './pages/WritePage'
 import LoginPage from './pages/Login'
+import RestaurantDetailPage from './pages/RestaurantDetailPage'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <BrowserRouter>
@@ -16,6 +17,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <Route path="/search" element={<SearchPage/>} />
     <Route path="/write" element={<WritePage/>} />
     <Route path="/login" element={<LoginPage/>} />
+    <Route path="/myList" element={<RestaurantDetailPage/>} />
 	  <Route path="/test" element={<TestPage/>} />
   </Routes>
 	</BrowserRouter>,
