@@ -11,7 +11,7 @@ export default function LandingPage(){
     return(
         // props로 넘겨주는 것 들은 나중에 데이터로 넘겨줄 예정
         <Wrapper>
-            <SearchBar containerStyles={{padding:'48px 20px 16px 20px'}} placeHolder='지역, 식당 이름을 입력해보세요'/>
+            <SearchBar containerStyles={{padding:'8px 12px',borderBottom:'1px solid #000'}} wrapperStyles={{border:'none'}} placeHolder='지역, 식당 이름을 입력해보세요'/>
             <MyLocationBt src="/src/assets/image/myLocationBt.svg" onClick={onClickGetMyLocation}/>
             <Map restaurantName={'은희네 해장국이었음 좋겠다'}
                 lat={coords.lat}
@@ -31,10 +31,9 @@ export default function LandingPage(){
                             2023.07.11
                         </DetailText>
                     </ContentsWrapper>
-                    <ContentsWrapper>
-                    <CommonButton buttonText='내 기록 0건 보기' onClickEvent={()=>{}} buttonStyles={{width:'170px',height:'48px',backgroundColor:'#fff',border:'1px solid #000', color:'#000'}}/>
-                    <CommonButton buttonText='기록 추가하기' onClickEvent={()=>{}} buttonStyles={{width:'170px',height:'48px',backgroundColor:'#000',color:'#fff'}} />
-                    </ContentsWrapper>
+                    {/* <ContentsWrapper>                     */}
+                    <CommonButton buttonText='기록 추가하기' onClickEvent={()=>{}} buttonStyles={{width:'100%',height:'48px',backgroundColor:'#000',color:'#fff'}} />
+                    {/* </ContentsWrapper> */}
                 </Detail>
             }
         </Wrapper>
@@ -58,6 +57,7 @@ const Detail = styled.div`
     background-color: #fff;
     position: fixed;
     bottom:0;
+    border-top: 1px solid #000;
     z-index: 3;
 `
 const ContentsWrapper = styled.div`
