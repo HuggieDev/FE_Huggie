@@ -1,12 +1,17 @@
 import CommonButton from '../../commons/buttons/commonButton'
 import * as S from './login.styled'
+
+declare const window: typeof globalThis & {
+    Kakao: any;
+  };
+
+
 export default function Login(){
-    const REST_API_KEY = '0b48ff6f628ca5627579726e9e4906dc';
-    const REDIRECT_URI = 'http://localhost:3000/social';
+    const REST_API_KEY = '9ee8226f1f09f2240727176af251aac0';
+    const REDIRECT_URI = 'http://localhost:3001/social'
     const link = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
     const loginHandler = () => {
-        console.log('dd')
         window.location.href = link;
     };
   
