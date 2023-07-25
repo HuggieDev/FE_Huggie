@@ -13,22 +13,36 @@ const CommonButton = ({
   buttonStyles?: { [key: string]: string | number };
   iconSrc?: string;
 }) => {
+  
   let icon = '';
   if (iconSrc) icon = iconSrc;
   else if (buttonText.includes('다음')) icon = '/src/assets/image/Navigate next.svg';
-  else if (buttonText.includes('추가')) icon = '/src/assets/image/Add.svg';
+  else if (buttonText.includes('추가')){
+    if(buttonStyles?.backgroundColor==='#000'){
+      icon = '/src/assets/image/AddWhite.svg';
+    }else{
+      icon = '/src/assets/image/Add.svg';
+    }
+    }
   return (
-    <BtnWrapper isActive={isActive} onClick={onClickEvent} style={buttonStyles}>
-      {buttonText}
-      <Icon src={icon} />
-    </BtnWrapper>
+    <BtWrap>
+      <BtnWrapper isActive={isActive} onClick={onClickEvent} style={buttonStyles}>
+        {buttonText}
+        <Icon src={icon} />
+      </BtnWrapper>
+    </BtWrap>
   );
 };
 interface ButtonProps {
   isActive?: boolean;
 }
+const BtWrap = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
 const BtnWrapper = styled.div`
-  width: 100%;
+  width: 91%;
   background-color: ${(props: ButtonProps) =>
     props.isActive ? '#E4571B' : '#e6e6e6'};
   color: ${(props: ButtonProps) => (props.isActive ? '#000' : '#808080')};

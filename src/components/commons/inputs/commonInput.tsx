@@ -5,6 +5,7 @@ const CommonInput = ({
   titleStyles,
   errorMessage,
   isSearch,
+  leftIcon,
   rightIcon,
   wrapperStyles,
   placeHolder,
@@ -14,6 +15,7 @@ const CommonInput = ({
   titleStyles?: { [key: string]: string | number };
   errorMessage?: string;
   isSearch?: boolean;
+  leftIcon?:JSX.Element
   rightIcon?:JSX.Element
   wrapperStyles?: {[key:string]:string|number}
   placeHolder?:string
@@ -23,13 +25,14 @@ const CommonInput = ({
     <>
       {title && <Title style={titleStyles}>{title}</Title>}
       <InputWrapper errorMessage={errorMessage} isSearch={isSearch} style={wrapperStyles}>
+        {leftIcon&&leftIcon}
         {isSearch && (
           <img
             src="/src/assets/image/Search.svg"
           />
         )}
         {isTextArea ? 
-        <UnderLineTextArea placeholder={placeHolder}/>
+        <UnderLineTextArea placeholder={placeHolder} errorMessage={errorMessage}/>
       :
       <UnderLineInput placeholder={placeHolder}/>
       }
@@ -63,10 +66,10 @@ const UnderLineInput = styled.input`
 `;
 const UnderLineTextArea = styled.textarea`
   width: 100%;
-  height: auto;
-  min-height: 40px;
-  /* max-height: 500px; */
-  border: none;
+  height: 312px;
+  background-color: #F2F2F2;
+  border: ${(props: StyleProps) =>
+    props.errorMessage ? '1px solid #DE350B' : '1px solid #000'};
   outline: none;
   padding: 12px 8px;
   resize: none;
