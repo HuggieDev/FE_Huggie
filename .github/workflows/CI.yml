@@ -1,14 +1,14 @@
-name: CI
+# name: CI
 
-on:
-  pull_request:
-    branches:
-      - develop
-jobs:
-  review:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - uses: uesteibar/reviewer-lottery@v2
-      with:
-        repo-token: ${{ secrets.TOKEN_KEY }}
+# on:
+#   pull_request:
+#     branches:
+#       - develop
+# jobs:
+#   review:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v1
+#     - uses: uesteibar/reviewer-lottery@v2
+#       with:
+#         repo-token: ${{ secrets.TOKEN_KEY }}
