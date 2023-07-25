@@ -1,13 +1,9 @@
-import { Component } from "react";
+import RoutesCompoents from "./pages/Routes";
 function App() {
 	return (
 		<>
-			<div>안녕하세요 앱세팅 페이진데요</div>
-			<div>나중에 레이아웃 설정해주세오</div>
-			{/* <Component/> */}
+			<RoutesCompoents />
 		</>
 	);
 }
-
 export default App;
-
